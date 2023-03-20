@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-03-20T12:45:39.466Z",
+    "end": "2023-03-20T12:45:57.735Z",
+    "duration": 18269,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "a05392bb-6f20-4c40-b2d7-1fa0481b03ac",
+      "title": "",
+      "fullFile": "cypress/e2e/editArticle.cy.js",
+      "file": "cypress/e2e/editArticle.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "b5166672-caeb-4f6d-8be8-31ceb1b8a9b4",
+          "title": "Edit article tests",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "can edit an article with new description",
+              "fullTitle": "Edit article tests can edit an article with new description",
+              "timedOut": null,
+              "duration": 17838,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.intercept(\"PUT\", `${Cypress.env(\"apiUrl\")}/articles/*`).as(\"editArticle\");\n_navigation.navigation.gotoUserProfile();\n_feedPage.feedPage.getArticlesList.should(\"be.visible\");\n_feedPage.feedPage.getArticleItem(0);\n_articlePage.articlePage.startEditArticle();\n_publish.publish.editArticleDescription(postDescription);\n_publish.publish.submitArticle();\ncy.wait(\"@editArticle\").then(interception => {\n  expect(interception.response.statusCode).to.eq(200);\n  expect(interception.response.body.article.description).to.eq(postDescription);\n});",
+              "err": {},
+              "uuid": "b7f5b193-a5b4-4acc-905c-597e40a2cfe0",
+              "parentUUID": "b5166672-caeb-4f6d-8be8-31ceb1b8a9b4",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "b7f5b193-a5b4-4acc-905c-597e40a2cfe0"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 17838,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results/mochawesome",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

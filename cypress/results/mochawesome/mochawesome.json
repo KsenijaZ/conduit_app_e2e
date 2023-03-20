@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-03-20T12:43:33.955Z",
+    "end": "2023-03-20T12:43:53.231Z",
+    "duration": 19276,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b115118e-f532-422b-9194-09649234db7b",
+      "title": "",
+      "fullFile": "cypress/e2e/addComment.cy.js",
+      "file": "cypress/e2e/addComment.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "a4fba991-823d-4e65-bd90-9dc9f33270d0",
+          "title": "Publish article tests",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "can add a comment to the article",
+              "fullTitle": "Publish article tests can add a comment to the article",
+              "timedOut": null,
+              "duration": 18758,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.intercept(\"POST\", `${Cypress.env(\"apiUrl\")}/articles/${createdArticleSlug}/comments`).as(\"addComment\");\n_navigation.navigation.gotoUserProfile();\n_feedPage.feedPage.getArticlesList.should(\"be.visible\");\n_feedPage.feedPage.getArticleItem(0);\n_articlePage.articlePage.postComment(comment);\ncy.wait(\"@addComment\").then(interception => {\n  expect(interception.response.statusCode).to.eq(200);\n  expect(interception.response.body.comment.body).contains(comment);\n});",
+              "err": {},
+              "uuid": "c0705e99-7d2c-4641-afe5-307af8b0c264",
+              "parentUUID": "a4fba991-823d-4e65-bd90-9dc9f33270d0",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "c0705e99-7d2c-4641-afe5-307af8b0c264"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 18758,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results/mochawesome",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

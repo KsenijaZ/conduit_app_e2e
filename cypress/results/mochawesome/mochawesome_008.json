@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-03-20T12:47:16.386Z",
+    "end": "2023-03-20T12:47:21.331Z",
+    "duration": 4945,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "3a575598-0313-4912-8de3-465c91b0c601",
+      "title": "",
+      "fullFile": "cypress/e2e/register.cy.js",
+      "file": "cypress/e2e/register.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "a3460dcb-c16d-4e42-92e5-035286aa3238",
+          "title": "Register page tests",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "can register with random data",
+              "fullTitle": "Register page tests can register with random data",
+              "timedOut": null,
+              "duration": 4707,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.intercept(\"POST\", `${apiUrl}/users`).as(\"registerRandomData\");\n_registerPage.register.register(_constants.constants.randomUserName, _constants.constants.randomUserEmail, _constants.constants.randomUserPassword);\ncy.wait(\"@registerRandomData\").then(interception => {\n  expect(interception.response.statusCode).to.eq(200);\n  expect(interception.response.body.user.token).to.exist;\n  _navigation.navigation.signUpBtn.should(\"not.exist\");\n});",
+              "err": {},
+              "uuid": "f40c3243-51b1-4aee-a68c-266d5af048ab",
+              "parentUUID": "a3460dcb-c16d-4e42-92e5-035286aa3238",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "f40c3243-51b1-4aee-a68c-266d5af048ab"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 4707,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results/mochawesome",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

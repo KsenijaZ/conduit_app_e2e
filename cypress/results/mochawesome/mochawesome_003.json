@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-03-20T12:45:12.054Z",
+    "end": "2023-03-20T12:45:27.949Z",
+    "duration": 15895,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "7ac7e736-3099-4aec-90a9-68e39dfe4296",
+      "title": "",
+      "fullFile": "cypress/e2e/deleteComment.cy.js",
+      "file": "cypress/e2e/deleteComment.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "7b7d8a74-58ca-4d95-8b5c-25fbe8281be3",
+          "title": "Publish article tests",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "can delete a comment",
+              "fullTitle": "Publish article tests can delete a comment",
+              "timedOut": null,
+              "duration": 15705,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//cy.loginViaUi();\ncy.intercept(\"DELETE\", `${Cypress.env(\"apiUrl\")}/articles/*/comments/*`).as(\"deleteComment\");\n_navigation.navigation.gotoUserProfile();\n_feedPage.feedPage.getArticlesList.should(\"be.visible\");\n_feedPage.feedPage.getArticleItem(0);\n_articlePage.articlePage.deleteComment();\ncy.wait(\"@deleteComment\").then(interception => {\n  expect(interception.response.statusCode).to.eq(200);\n});",
+              "err": {},
+              "uuid": "ef7ae516-c1ec-41a7-91ea-996e2eda56af",
+              "parentUUID": "7b7d8a74-58ca-4d95-8b5c-25fbe8281be3",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "ef7ae516-c1ec-41a7-91ea-996e2eda56af"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 15705,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results/mochawesome",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

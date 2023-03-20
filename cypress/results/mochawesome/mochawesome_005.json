@@ -1,0 +1,162 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-03-20T12:46:10.230Z",
+    "end": "2023-03-20T12:46:25.950Z",
+    "duration": 15720,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "3533ff9a-03df-4a16-ae91-ea37c091ca77",
+      "title": "",
+      "fullFile": "cypress/e2e/login.cy.js",
+      "file": "cypress/e2e/login.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "00be3838-e70f-4af5-9aed-d147dfec95d4",
+          "title": "Login page",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should login with valid credentials",
+              "fullTitle": "Login page should login with valid credentials",
+              "timedOut": null,
+              "duration": 5686,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.intercept(\"POST\", `${Cypress.env(\"apiUrl\")}/users/login`).as(\"loginData\");\n_loginPage.loginPage.login(Cypress.env(\"validEmail\"), Cypress.env(\"validPassword\"));\ncy.wait(\"@loginData\").then(interception => {\n  expect(interception.response.statusCode).to.eq(200);\n  expect(interception.response.body.user.token).to.exist;\n  _navigation.navigation.signInBtn.should(\"not.exist\");\n  _navigation.navigation.userProfileBtn.should(\"be.visible\");\n});",
+              "err": {},
+              "uuid": "c10afa50-7c0d-4033-b051-d762c585b2b7",
+              "parentUUID": "00be3838-e70f-4af5-9aed-d147dfec95d4",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should show error message when login with non-existing email",
+              "fullTitle": "Login page should show error message when login with non-existing email",
+              "timedOut": null,
+              "duration": 2254,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.intercept(\"POST\", `${Cypress.env(\"apiUrl\")}/users/login`).as(\"loginData\");\n_loginPage.loginPage.login(_constants.constants.randomUserEmail, Cypress.env(\"validPassword\"));\ncy.wait(\"@loginData\").then(interception => {\n  expect(interception.response.statusCode).to.eq(403);\n  expect(interception.response.body.user).to.be.undefined;\n  _navigation.navigation.signInBtn.should(\"exist\");\n  cy.url().should(\"contain\", \"/login\");\n  _loginPage.loginPage.errorMessage.should(\"be.visible\").and(\"have.text\", \" email or password is invalid \").and(\"have.css\", \"color\", \"rgb(184, 92, 92)\");\n  _navigation.navigation.userProfileBtn.should(\"not.exist\");\n});",
+              "err": {},
+              "uuid": "c43854d5-d913-4a88-9b7d-e93004d04918",
+              "parentUUID": "00be3838-e70f-4af5-9aed-d147dfec95d4",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should show error message when login with valid email and incorrect password",
+              "fullTitle": "Login page should show error message when login with valid email and incorrect password",
+              "timedOut": null,
+              "duration": 2431,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.intercept(\"POST\", `${Cypress.env(\"apiUrl\")}/users/login`).as(\"loginData\");\n_loginPage.loginPage.login(Cypress.env(\"validEmail\"), _constants.constants.randomUserPassword);\ncy.wait(\"@loginData\").then(interception => {\n  expect(interception.response.statusCode).to.eq(403);\n  expect(interception.response.body.user).to.be.undefined;\n  _navigation.navigation.signInBtn.should(\"exist\");\n  cy.url().should(\"contain\", \"/login\");\n  _loginPage.loginPage.errorMessage.should(\"be.visible\").and(\"have.text\", \" email or password is invalid \").and(\"have.css\", \"color\", \"rgb(184, 92, 92)\");\n  _navigation.navigation.userProfileBtn.should(\"not.exist\");\n});",
+              "err": {},
+              "uuid": "663f5c0f-e2d1-4575-90a8-055060919e9f",
+              "parentUUID": "00be3838-e70f-4af5-9aed-d147dfec95d4",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should show error message when login with wrong format email and valid password",
+              "fullTitle": "Login page should show error message when login with wrong format email and valid password",
+              "timedOut": null,
+              "duration": 4849,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.intercept(\"POST\", `${Cypress.env(\"apiUrl\")}/users/login`).as(\"loginData\");\n_loginPage.loginPage.login(_constants.constants.wrongFormatEmail, Cypress.env(\"validPassword\"));\ncy.wait(\"@loginData\").then(interception => {\n  expect(interception.response.statusCode).to.eq(403);\n  expect(interception.response.body.user).to.be.undefined;\n  _navigation.navigation.signInBtn.should(\"exist\");\n  cy.url().should(\"contain\", \"/login\");\n  _loginPage.loginPage.errorMessage.should(\"be.visible\").and(\"have.text\", \" email or password is invalid \").and(\"have.css\", \"color\", \"rgb(184, 92, 92)\");\n  _navigation.navigation.userProfileBtn.should(\"not.exist\");\n});",
+              "err": {},
+              "uuid": "f8dc024a-7e1a-458e-94dd-be308afaa0ab",
+              "parentUUID": "00be3838-e70f-4af5-9aed-d147dfec95d4",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "c10afa50-7c0d-4033-b051-d762c585b2b7",
+            "c43854d5-d913-4a88-9b7d-e93004d04918",
+            "663f5c0f-e2d1-4575-90a8-055060919e9f",
+            "f8dc024a-7e1a-458e-94dd-be308afaa0ab"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 15220,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results/mochawesome",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
