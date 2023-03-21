@@ -18,6 +18,7 @@ class Constants {
   postBody = faker.lorem.paragraphs(1);
   postTags = faker.lorem.words(2);
   postComment = faker.lorem.sentences(2);
+  textSpaceBlank = " ";
 }
 
 export const constants = new Constants();
